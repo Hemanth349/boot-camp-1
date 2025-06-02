@@ -4,14 +4,21 @@ steps:
 
 - name: 'gcr.io/cloud-builders/gcloud'
   args:
-  - 'run'
-  - 'deploy'
-  - 'admin-web'
-  - '--image'
-  - 'gcr.io/$PROJECT_ID/admin-web'
-  - '--region'
-  - 'us-central1'
-  - '--platform'
-  - 'managed'
-  - '--allow-unauthenticated'
-  
+    - 'run'
+    - 'deploy'
+    - 'admin-web'
+    - '--image'
+    - 'gcr.io/$PROJECT_ID/admin-web'
+    - '--region'
+    - 'us-central1'
+    - '--platform'
+    - 'managed'
+    - '--allow-unauthenticated'
+
+substitutions:
+  _SERVICE_NAME: admin-web
+
+options:
+  logging: CLOUD_LOGGING_ONLY
+
+
