@@ -4,13 +4,20 @@ steps:
 
 - name: 'gcr.io/cloud-builders/gcloud'
   args:
-  - 'run'
-  - 'deploy'
-  - 'user-web'
-  - '--image'
-  - 'gcr.io/$PROJECT_ID/user-app'
-  - '--region'
-  - 'us-central1'
-  - '--platform'
-  - 'managed'
-  - '--allow-unauthenticated'
+    - 'run'
+    - 'deploy'
+    - 'user-app'
+    - '--image'
+    - 'gcr.io/$PROJECT_ID/user-app'
+    - '--region'
+    - 'us-central1'
+    - '--platform'
+    - 'managed'
+    - '--allow-unauthenticated'
+
+substitutions:
+  _SERVICE_NAME: user-app
+
+options:
+  logging: CLOUD_LOGGING_ONLY
+
