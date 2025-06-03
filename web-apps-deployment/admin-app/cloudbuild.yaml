@@ -8,5 +8,9 @@ steps:
            '--region', 'us-central1',
            '--platform', 'managed',
            '--allow-unauthenticated']
+
 images:
   - gcr.io/project-2-458822/admin-web
+
+options:
+  logging: CLOUD_LOGGING_ONLY
