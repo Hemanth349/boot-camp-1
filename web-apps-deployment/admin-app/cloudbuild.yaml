@@ -14,3 +14,6 @@ steps:
     - '--platform'
     - 'managed'
     - '--allow-unauthenticated'
+    serviceaccounts: projects/YOUR_PROJECT_ID/serviceAccounts/YOUR_SA@YOUR_PROJECT_ID.iam.gserviceaccount.com
+ options:
+  defaultLogsBucketBehavior: REGIONAL_USER_OWNED_BUCKET
