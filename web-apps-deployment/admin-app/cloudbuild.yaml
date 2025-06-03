@@ -1,23 +1,12 @@
 steps:
   - name: 'gcr.io/cloud-builders/docker'
     args: ['build', '-t', 'gcr.io/project-2-458822/admin-web', '.']
-    dir: 'web-apps-deployment/admin-app'  # 👈 Add this line
 
   - name: 'gcr.io/cloud-builders/gcloud'
-    args:
-      - 'run'
-      - 'deploy'
-      - 'admin-web'
-      - '--image'
-      - 'gcr.io/project-2-458822/admin-web'
-      - '--region'
-      - 'us-central1'
-      - '--platform'
-      - 'managed'
-      - '--allow-unauthenticated'
-    dir: 'web-apps-deployment/admin-app'  # 👈 Add this if app.yaml etc. are in same folder
-
-serviceAccount: projects/project-2-458822/serviceAccounts/cloud-build-user@project-2-458822.iam.gserviceaccount.com
-
-options:
-  defaultLogsBucketBehavior: REGIONAL_USER_OWNED_BUCKET
+    args: ['run', 'deploy', 'admin-web',
+           '--image', 'gcr.io/project-2-458822/admin-web',
+           '--region', 'us-central1',
+           '--platform', 'managed',
+           '--allow-unauthenticated']
+images:
+  - gcr.io/project-2-458822/admin-web
