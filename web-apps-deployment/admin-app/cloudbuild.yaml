@@ -3,6 +3,9 @@ steps:
     args: ['build', '-t', 'gcr.io/project-2-458822/admin-web', '.']
     dir: 'web-apps-deployment/admin-app'
 
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['push', 'gcr.io/project-2-458822/admin-web']
+
   - name: 'gcr.io/cloud-builders/gcloud'
     args: ['run', 'deploy', 'admin-web',
            '--image', 'gcr.io/project-2-458822/admin-web',
