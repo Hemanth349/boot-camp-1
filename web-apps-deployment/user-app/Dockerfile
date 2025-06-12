@@ -1,6 +1,12 @@
-FROM nginx:alpine
+FROM python:3.10-slim
 
-COPY nginx.conf /etc/nginx/conf.d/default.conf
-COPY . /usr/share/nginx/html
+WORKDIR /app
+COPY . /app
 
-HEALTHCHECK CMD curl --fail http://localhost:8080 || exit 1
+RUN pip install -r requirements.txt
+
+ENV PORT=8080
+
+EXPOSE 8080
+
+CMD ["python", "main.py"]
