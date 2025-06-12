@@ -6,7 +6,7 @@ steps:
   args:
   - 'run'
   - 'deploy'
-  - 'user-web'
+  - 'user-app'
   - '--image'
   - 'gcr.io/$PROJECT_ID/user-app'
   - '--region'
