@@ -1,0 +1,31 @@
+swagger: "2.0"
+info:
+  title: user-app API
+  description: API Gateway for publishing product data to Pub/Sub
+  version: 1.0.0
+host: user-app-gateway-6lx68a5s.uc.gateway.dev
+x-google-endpoints:
+  - name: user-app-gateway-6lx68a5s.uc.gateway.dev
+    allowCors: true
+    x-google-allow: all
+schemes:
+  - https
+paths:
+  /api/publish:
+    post:
+      summary: Publish a message to Pub/Sub
+      operationId: publishMessage
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: Message published successfully
+          schema:
+            type: object
+            properties:
+              message_id:
+                type: string
+      x-google-backend:
+        address: https://user-app-517903261552.us-central1.run.app/api/publish

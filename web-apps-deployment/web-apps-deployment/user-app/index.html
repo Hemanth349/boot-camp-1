@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ShopSphere Store</title>
+  <style>
+    body { font-family: Arial; margin: 20px; background-color: #f8f9fa; }
+    h1 { color: #333; }
+    .product { margin-bottom: 20px; padding: 10px; border: 1px solid #ccc; background: #fff; }
+    .cart { margin-top: 30px; }
+    button { padding: 5px 10px; }
+  </style>
+</head>
+<body>
+
+  <h1>Welcome to ShopSphere</h1>
+
+  <div class="product" data-id="P001">
+    <h3>Smartphone</h3>
+    <p>Price: $499</p>
+    Quantity: <input type="number" min="1" value="1" />
+    <button onclick="addToCart('P001', 'Smartphone', 499)">Add to Cart</button>
+  </div>
+
+  <div class="product" data-id="P002">
+    <h3>Wireless Headphones</h3>
+    <p>Price: $99</p>
+    Quantity: <input type="number" min="1" value="1" />
+    <button onclick="addToCart('P002', 'Wireless Headphones', 99)">Add to Cart</button>
+  </div>
+
+  <div class="cart">
+    <h2>Cart</h2>
+    <ul id="cart-list"></ul>
+    <button onclick="submitCart()">Checkout</button>
+  </div>
+
+  <script>
+    const cart = [];
+
+    function addToCart(id, name, price) {
+      const quantityInput = document.querySelector(`[data-id='${id}'] input`);
+      const quantity = parseInt(quantityInput.value);
+      cart.push({ product_id: id, name, price, quantity });
+      const listItem = document.createElement('li');
+      listItem.innerText = `${name} (x${quantity})`;
+      document.getElementById('cart-list').appendChild(listItem);
+    }
+
+    function submitCart() {
+      fetch("/api/publish", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ cart })
+      })
+      .then(res => res.json())
+      .then(data => {
+        alert("Order submitted!");
+        cart.length = 0;
+        document.getElementById('cart-list').innerHTML = '';
+      })
+      .catch(err => alert("Error: " + err));
+    }
+  </script>
+
+</body>
+</html>
