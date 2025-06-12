@@ -5,7 +5,7 @@ import json
 
 app = Flask(__name__)
 project_id = 'project-2-458822'
-topic_id = 'your-topic-name'  # replace with your actual topic name
+topic_id = 'inventory-events'  # replace with your actual topic name
 publisher = pubsub_v1.PublisherClient()
 topic_path = publisher.topic_path(project_id, topic_id)
 
