@@ -17,7 +17,7 @@ steps:
   args:
     - 'run'
     - 'deploy'
-    - 'user-app'
+    - 'admin-app'  # 🔧 Corrected: Was incorrectly written as 'user-app'
     - '--image'
     - 'gcr.io/$PROJECT_ID/admin-app'
     - '--region'
@@ -25,4 +25,4 @@ steps:
     - '--platform'
     - 'managed'
     - '--allow-unauthenticated'
-
+    - '--clear-vpc-connector'  # ✅ This disables VPC usage during deploy
