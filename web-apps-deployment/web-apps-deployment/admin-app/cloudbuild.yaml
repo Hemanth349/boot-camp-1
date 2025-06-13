@@ -10,19 +10,17 @@ steps:
     - '-t'
     - 'gcr.io/$PROJECT_ID/admin-app'
     - '-f'
-    - 'web-apps-deployment/web-apps-deployment/admin-app/Dockerfile'
+    - 'web-apps-deployment/web-apps-deployment/admin-app/Dockerfile'  # ✅ Corrected path to Dockerfile
     - 'web-apps-deployment/web-apps-deployment/admin-app'
 
 - name: 'gcr.io/cloud-builders/gcloud'
   args:
     - 'run'
     - 'deploy'
-    - 'admin-app'  # 🔧 Corrected: Was incorrectly written as 'user-app'
+    - 'admin-app'  # ✅ Make sure this matches the service you want
     - '--image'
     - 'gcr.io/$PROJECT_ID/admin-app'
     - '--region'
     - 'us-central1'
     - '--platform'
-    - 'managed'
-    - '--allow-unauthenticated'
-    - '--clear-vpc-connector'  # ✅ This disables VPC usage during deploy
+    - '
