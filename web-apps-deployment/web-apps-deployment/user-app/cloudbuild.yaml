@@ -1,6 +1,7 @@
+serviceAccount: hemanth-861@project-2-458822.iam.gserviceaccount.com
+
 options:
   logging: CLOUD_LOGGING_ONLY
-  serviceAccount: hemanth-861@project-2-458822.iam.gserviceaccount.com
 
 steps:
 - name: 'gcr.io/cloud-builders/docker'
