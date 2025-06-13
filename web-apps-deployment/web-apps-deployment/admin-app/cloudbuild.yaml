@@ -1,4 +1,5 @@
-serviceAccount: hemanth-861@project-2-458822.iam.gserviceaccount.com
+serviceAccount: projects/project-2-458822/serviceAccounts/hemanth-861@project-2-458822.iam.gserviceaccount.com
+
 
 options:
   logging: CLOUD_LOGGING_ONLY
