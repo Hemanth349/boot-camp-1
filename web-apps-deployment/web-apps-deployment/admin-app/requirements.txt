@@ -1,2 +1,6 @@
-Flask
+Flask==2.0.3
+Werkzeug==2.0.3
 google-cloud-pubsub
+google-cloud-firestore
+flask-cors
+gunicorn
