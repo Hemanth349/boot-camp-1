@@ -10,7 +10,8 @@ steps:
     - '-t'
     - 'gcr.io/$PROJECT_ID/admin-app'
     - '-f'
-    - 'web-apps-deployment/web-apps-deployment/admin-app/Dockerfile'  # ✅ Corrected path to Dockerfile
+    - 'web-apps-deployment/web-apps-deployment/admin-app/cloudbuild.yaml  
+    - 'web-apps-deployment/web-apps-deployment/admin-app/Dockerfile 
     - 'web-apps-deployment/web-apps-deployment/admin-app'
 
 - name: 'gcr.io/cloud-builders/gcloud'
