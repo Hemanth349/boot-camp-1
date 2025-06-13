@@ -1,9 +1,6 @@
 options:
   logging: CLOUD_LOGGING_ONLY
-  # Or if you want a logs bucket instead:
-  # logsBucket: gs://your-logs-bucket-name
-
-serviceAccount: your-build-service-account@project.iam.gserviceaccount.com
+  serviceAccount: hemanth-861@project-2-458822.iam.gserviceaccount.com
 
 steps:
 - name: 'gcr.io/cloud-builders/docker'
