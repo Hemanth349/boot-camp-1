@@ -9,16 +9,19 @@ app = Flask(__name__)
 CORS(app)
 logging.basicConfig(level=logging.INFO)
 
+# GCP Pub/Sub setup
 project_id = 'project-2-458822'
-topic_id = 'inventory-events'
+topic_id = 'inventory-events'  # make sure this topic exists in Pub/Sub
 publisher = pubsub_v1.PublisherClient()
 topic_path = publisher.topic_path(project_id, topic_id)
 
+# POST endpoint to publish product data to Pub/Sub
 @app.route('/api/publish', methods=['POST'])
 def publish():
     data = request.get_json()
     required_fields = ['product_id', 'quantity', 'timestamp']
-    
+
+    # Validate request payload
     if not data or not all(field in data for field in required_fields):
         return jsonify({'error': f'Missing required fields: {required_fields}'}), 400
 
@@ -28,10 +31,12 @@ def publish():
         message_id = future.result()
         logging.info(f"Published message: {data}")
         return jsonify({'message_id': message_id}), 200
+
     except Exception as e:
         logging.error(f"Failed to publish: {e}")
         return jsonify({'error': str(e)}), 500
 
+# Optional: serve static homepage (e.g., index.html)
 @app.route('/')
 def index():
     return send_from_directory('.', 'index.html')
