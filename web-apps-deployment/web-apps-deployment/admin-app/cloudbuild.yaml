@@ -19,7 +19,7 @@ steps:
   args:
     - 'run'
     - 'deploy'
-    - 'admin-app'  # ✅ Make sure this matches the service you want
+    - 'admin-app'  
     - '--image'
     - 'gcr.io/$PROJECT_ID/admin-app'
     - '--region'
